@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JulsJewels</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #d8b4f8;
+    color: black;
+}
+
+/* HERO */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+    url('WhatsApp Image 2026-04-14 at 08.36.27.jpeg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* FILTERS */
+.filters {
+    text-align: center;
+    margin: 20px;
+}
+
+.filters button {
+    padding: 10px 20px;
+    border: none;
+    background: #a855f7;
+    color: white;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* TAG */
+.tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.product button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #a855f7;
+    color: white;
+}
+
+/* CART */
+.cart {
+    text-align: center;
+    padding: 20px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+/* POPUP */
+#orderPopup {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+
+/* SOCIALS */
+.socials {
+    text-align:center;
+}
+
+.socials i {
+    font-size:25px;
+    margin:10px;
+    color:#a855f7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>JulsJewels</h1>
+</div>
+
+<!-- FILTERS -->
+<div class="filters">
+    <button onclick="filter('all')">All</button>
+    <button onclick="filter('rings')">Rings</button>
+    <button onclick="filter('waist')">Waist Chains</button>
+    <button onclick="filter('bracelets')">Bracelets</button>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products">
+
+    <!-- RINGS -->
+    <div class="product rings">
+        <div class="tag">Only 5 left</div>
+        <img src="WhatsApp Image 2026-04-14 at 08.36.27.jpeg">
+        <p><b>Abstract Gold Rings</b></p>
+        <p>KES 1200</p>
+        <button onclick="addToCart('Abstract Gold Rings',1200)">Add</button>
+    </div>
+
+    <div class="product rings">
+        <div class="tag">Only 3 left</div>
+        <img src="WhatsApp Image 2026-04-14 at 08.36.27 (1).jpeg">
+        <p><b>Floral Rings</b></p>
+        <p>KES 1500</p>
+        <button onclick="addToCart('Floral Rings',1500)">Add</button>
+    </div>
+
+    <div class="product rings">
+        <div class="tag">Only 6 left</div>
+        <img src="WhatsApp Image 2026-04-14 at 08.36.27 (2).jpeg">
+        <p><b>Initial Rings</b></p>
+        <p>KES 1300</p>
+        <button onclick="addToCart('Initial Rings',1300)">Add</button>
+    </div>
+
+    <!-- WAIST CHAINS -->
+    <div class="product waist">
+        <div class="tag">Trending</div>
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638">
+        <p><b>Pearl Waist Chain</b></p>
+        <p>KES 1800</p>
+        <button onclick="addToCart('Pearl Waist Chain',1800)">Add</button>
+    </div>
+
+    <!-- BRACELETS -->
+    <div class="product bracelets">
+        <div class="tag">New</div>
+        <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7">
+        <p><b>Bead Bracelet</b></p>
+        <p>KES 700</p>
+        <button onclick="addToCart('Bead Bracelet',700)">Add</button>
+    </div>
+
+</div>
+
+<!-- CART -->
+<div class="cart">
+    <button onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+</div>
+
+<!-- CONTACT -->
+<div style="text-align:center;">
+    <p>📞 07999193907</p>
+    <p>📧 julsjewels@gmail.com</p>
+</div>
+
+<!-- SOCIALS -->
+<div class="socials">
+    <i class="fab fa-tiktok"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp" href="https://wa.me/254799919307">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- POPUP -->
+<div id="orderPopup">
+<div style="background:white; padding:20px; border-radius:10px;">
+    <h3>Complete Order</h3>
+    <input id="name" placeholder="Name"><br><br>
+    <select id="location">
+        <option>Nairobi</option>
+        <option>Outside Nairobi</option>
+    </select><br><br>
+    <button onclick="sendOrder()">Continue</button>
+</div>
+</div>
+
+<!-- JS -->
+<script>
+let cart = [];
+
+function addToCart(name, price){
+    cart.push({name, price});
+    alert(name + " added");
+}
+
+function checkoutWhatsApp(){
+    document.getElementById("orderPopup").style.display="flex";
+}
+
+function sendOrder(){
+    let name=document.getElementById("name").value;
+    let location=document.getElementById("location").value;
+
+    let delivery=location==="Nairobi"?200:400;
+    let total=0;
+
+    let msg="Hello JulsJewels:%0A";
+
+    cart.forEach(item=>{
+        msg += "- "+item.name+" KES "+item.price+"%0A";
+        total+=item.price;
+    });
+
+    total+=delivery;
+
+    msg+="Delivery: "+delivery+"%0ATotal: "+total;
+    msg+="%0AName: "+name+"%0ALocation: "+location;
+
+    window.open("https://wa.me/254799919307?text="+msg);
+}
+
+/* FILTER */
+function filter(cat){
+    let items=document.querySelectorAll('.product');
+    items.forEach(i=>{
+        i.style.display = (cat==='all'||i.classList.contains(cat)) ? 'block':'none';
+    });
+}
+</script>
+
+</body>
+</html>
